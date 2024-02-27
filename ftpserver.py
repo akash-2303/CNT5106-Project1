@@ -21,8 +21,11 @@ def send_file(client_socket, filename):
             client_socket.send(data)
 
 def main():
+    port_input = input("Enter the port number or press ENTER to use default port number(12000): ")
+    server_port = int(port_input) if port_input else SERVER_PORT
+
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind(('127.0.0.1', SERVER_PORT))
+    server_socket.bind(('127.0.0.1', server_port))
     server_socket.listen(5)
     print('Server is ready to receive')
 

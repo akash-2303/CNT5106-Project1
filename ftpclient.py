@@ -24,8 +24,10 @@ def send_file(client_socket, filename):
 
 def main():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_port = input(f'Enter the server port number(Default is 12000): ')
+    server_port = int(server_port) if server_port.isdigit() else SERVER_PORT
     try:
-        client_socket.connect((SERVER_IP, SERVER_PORT))
+        client_socket.connect((SERVER_IP, server_port))
         print('Connected to server')
     except Exception as e:
         print('Error in connecting to server:', e)
