@@ -6,12 +6,16 @@ SERVER_PORT = 12000
 BUFFER_SIZE = 1024
 
 def receive_file(client_socket, filename):
+    file_size = int(client_socket.recv(BUFFER_SIZE).decode())
+
     with open("new"+filename, 'wb') as file:
-        while True:
+        received = 0
+        while received < file_size:
             data = client_socket.recv(BUFFER_SIZE)
-            if data == b'END':
+            if not data:
                 break
             file.write(data)
+            received += len(data)
 
 def send_file(client_socket, filename):
     with open(filename, 'rb') as file:
