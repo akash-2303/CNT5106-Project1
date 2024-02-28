@@ -45,7 +45,7 @@ def main():
                 filename = cmd.split()[1]
                 receive_file(client_socket, filename)
                 print('File downloaded successfully')
-            elif cmd.startswith("put"):
+            elif cmd.startswith("upload"):
                 client_socket.send(cmd.encode())
                 filename = cmd.split()[1]
                 send_file(client_socket, filename)

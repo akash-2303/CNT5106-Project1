@@ -43,7 +43,7 @@ def main():
                     filename = cmd.split()[1]
                     send_file(client_socket, filename)
                     print('File sent successfully')
-                elif cmd.startswith("put"):
+                elif cmd.startswith("upload"):
                     filename = cmd.split()[1]
                     receive_file(client_socket, filename)
                     print('File received successfully')
